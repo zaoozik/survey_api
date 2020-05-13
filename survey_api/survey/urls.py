@@ -1,11 +1,16 @@
-from django.urls import path, include
+from django.urls import re_path, include
 from rest_framework import routers
-from .views import PollsViewSet
+from .views import AdminPollsViewSet, AdminQuestionViewSet, UserPollsViewSet
 
-router = routers.DefaultRouter()
+adminRouter = routers.DefaultRouter()
 
-router.register(r'polls', PollsViewSet)
+adminRouter.register(r'polls', AdminPollsViewSet)
+adminRouter.register(r'questions', AdminQuestionViewSet)
+
+userRouter = routers.DefaultRouter()
+userRouter.register(r'polls', UserPollsViewSet)
 
 urlpatterns = [
-    path('', include(router.urls))
+    re_path('admin/', include(adminRouter.urls)),
+    re_path('user/', include(userRouter.urls))
 ]

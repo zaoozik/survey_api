@@ -16,17 +16,18 @@ class Question(models.Model):
         ('select_one', 'select one'),
         ('select_many', 'select many'),
     ]
-    poll = models.ForeignKey(Poll, on_delete=models.CASCADE, null=True)
-    text = models.TextField(default='')
+    poll = models.ForeignKey(Poll, on_delete=models.CASCADE)
+    text = models.TextField()
     type = models.CharField(max_length=11, choices=QUESTION_TYPES)
 
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    text = models.TextField(default='')
+    text = models.TextField()
 
 
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    choice = models.ForeignKey(Choice, on_delete=models.CASCADE, null=True)
     text = models.TextField(default='')
+    userId = models.IntegerField()
