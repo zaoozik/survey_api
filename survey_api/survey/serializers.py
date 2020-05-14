@@ -8,7 +8,7 @@ class AdminQuestionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class AdminPollSerializer(serializers.ModelSerializer):
+class PollSerializer(serializers.ModelSerializer):
     class Meta:
         model = Poll
         fields = '__all__'
@@ -26,3 +26,8 @@ class UserPollSerializer(serializers.ModelSerializer):
         model = Poll
         fields = '__all__'
 
+
+class UserAnswerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Answer
+        fields = '__all__'
