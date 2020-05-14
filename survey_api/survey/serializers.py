@@ -27,7 +27,20 @@ class UserPollSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class UserQuestionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Question
+        fields = ['id', 'text']
+
+
 class UserAnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
         fields = '__all__'
+
+
+class UserChoiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Choice
+        fields = ['id', 'text']
+
