@@ -28,6 +28,6 @@ class Choice(models.Model):
 
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice = models.ForeignKey(Choice, on_delete=models.CASCADE, null=True)
+    choice = models.ForeignKey(Choice, on_delete=models.CASCADE, null=True, default=None)
     text = models.TextField(default='')
     user_id = models.IntegerField()

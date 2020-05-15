@@ -10,10 +10,10 @@ from rest_framework.response import Response
 
 from .models import Poll, Question, Answer, Choice
 from .serializers import PollSerializer, AdminQuestionSerializer, AdminPollCreateSerializer, UserAnswerSerializer, \
-    UserQuestionSerializer, UserChoiceSerializer
+    UserQuestionSerializer, UserChoiceSerializer, AdminChoiceSerializer
 
 
-# ADMIN
+# ADMIN views
 class AdminPollsViewSet(viewsets.ModelViewSet):
     queryset = Poll.objects.all()
     serializer_class = PollSerializer
@@ -26,13 +26,19 @@ class AdminPollsViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-class AdminQuestionViewSet(viewsets.ModelViewSet):
+class AdminQuestionsViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all()
     serializer_class = AdminQuestionSerializer
     permission_classes = [permissions.IsAdminUser]
 
 
-# USER
+class AdminChoicesViewSet(viewsets.ModelViewSet):
+    queryset = Choice.objects.all()
+    serializer_class = AdminChoiceSerializer
+    permission_classes = [permissions.IsAdminUser]
+
+
+# USER views
 class UserPollsViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Poll.objects.all()
     serializer_class = PollSerializer

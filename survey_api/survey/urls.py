@@ -1,11 +1,13 @@
 from django.urls import re_path, path, include
 from rest_framework import routers
-from .views import AdminPollsViewSet, AdminQuestionViewSet, UserPollsViewSet, get_poll_questions, handle_poll_question, get_user_answers
+from .views import AdminPollsViewSet, AdminQuestionsViewSet, UserPollsViewSet, get_poll_questions, handle_poll_question, \
+    get_user_answers, AdminChoicesViewSet
 
 adminRouter = routers.DefaultRouter()
 
 adminRouter.register(r'polls', AdminPollsViewSet)
-adminRouter.register(r'questions', AdminQuestionViewSet)
+adminRouter.register(r'questions', AdminQuestionsViewSet)
+adminRouter.register(r'choices', AdminChoicesViewSet)
 
 userRouter = routers.DefaultRouter()
 userRouter.register(r'polls', UserPollsViewSet)

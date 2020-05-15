@@ -2,6 +2,7 @@ from .models import Question, Answer, Choice, Poll
 from rest_framework import serializers
 
 
+#  Admin serializers
 class AdminQuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
@@ -21,6 +22,13 @@ class AdminPollCreateSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class AdminChoiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Choice
+        fields = '__all__'
+
+
+#  User serializers
 class UserPollSerializer(serializers.ModelSerializer):
     class Meta:
         model = Poll
